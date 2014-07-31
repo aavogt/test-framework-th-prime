@@ -91,12 +91,12 @@ isFunBind (FunBind _) = True
 isFunBind _           = False
 
 isPatBind :: Decl -> Bool
-isPatBind (PatBind _ _ _ _ _) = True
+isPatBind PatBind {} = True
 isPatBind _                   = False
 
 fromPatBind :: Decl -> String
-fromPatBind (PatBind _ (PVar (Ident  name)) _ _ _) = name
-fromPatBind (PatBind _ (PVar (Symbol name)) _ _ _) = name
+fromPatBind (PatBind _ (PVar (Ident  name)) _ _) = name
+fromPatBind (PatBind _ (PVar (Symbol name)) _ _) = name
 fromPatBind _ = error "fromPatBind"
 
 fromFunBind :: Decl -> String
